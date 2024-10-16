@@ -1,23 +1,23 @@
-import React from 'react'
-import FoodItem from './FoodItem'
+import React from 'react';
+import FoodItem from './FoodItem';
 
-function FoodList() {
-    const foodItems = [
-        {id: 1, name: "пирожок с капустой", price: 50},
-        {id: 2, name: "пирожок с грибами и картошкой", price: 55},
-        {id: 3, name: "пирожок с яблоком", price: 40}
-    ];
+function FoodList({ addToCart }) {
+  const foodItems = [
+    { id: 1, name: 'Пицца Маргарита', price: 450 },
+    { id: 2, name: 'Суши', price: 300 },
+    { id: 3, name: 'Бургер', price: 200 }
+  ];
 
-    return (
-        <div>
-            <h2>Выберете блюда:</h2>
-            <div>
-                {foodItems.map(food => (
-                    <FoodItem key = {food.id} name = {food.name} price = {food.price}/>
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      <h2>Выберите блюдо:</h2>
+      <div>
+        {foodItems.map(item => (
+          <FoodItem key={item.id} item={item} addToCart={addToCart} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default FoodList;
