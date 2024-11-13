@@ -1,21 +1,15 @@
-const getData = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('Data from server');
-        }, 1000);
-    });
-};
+const fs = require('fs');
+const crypto = require('crypto');
 
-const processData = (data) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (data === 'Data from server') {
-                resolve('Data is processing'); // Исправлено: resolve вместо resoleve
-            } else {
-                reject(new Error('All in shit'));
-            }
-        }, 1000);
-    });
-};
-
-getData().then((data) => processData(data)).then((result) => console.log(result)).catch((error) => console.error(error.message));
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Ошибка чтения файла:', err);
+  } else {
+    console.log('Содержимое файла прочитано, начинаем обработку...');
+    // Синхронная операция: например, сложное вычисление
+    const hash = crypto.createHash('sha256');
+    hash.update(data);
+    const result = hash.digest('hex');
+    console.log('Результат хеширования:', result);
+  }
+});

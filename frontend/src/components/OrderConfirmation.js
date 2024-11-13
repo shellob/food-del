@@ -1,4 +1,3 @@
-// components/OrderConfirmation.js
 
 import React from 'react';
 
