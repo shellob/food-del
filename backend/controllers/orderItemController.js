@@ -1,4 +1,4 @@
-const OrderItem = require('../modules/OrderItem');
+const OrderItem = require('../models/OrderItem');
 
 exports.createOrderItem = async(req, res) => {
     try {

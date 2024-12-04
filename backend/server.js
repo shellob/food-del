@@ -7,6 +7,10 @@ const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const orderItemRoutes = require('./routes/orderItemRoutes');
+const authRoutes = require('./routes/authRoutes')
+const cartRoutes = require('./routes/cartRoutes');
+
+
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
@@ -20,7 +24,8 @@ app.use('/api', productRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', orderRoutes);
 app.use('/api', orderItemRoutes);
-
+app.use('/api/auth', authRoutes);
+app.use('/api', cartRoutes);
 // Подключение к базе данных и синхронизация моделей
 sequelize.authenticate()
     .then(() => console.log('Соединение с базой данных установлено.'))
